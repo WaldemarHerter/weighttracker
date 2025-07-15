@@ -22,9 +22,10 @@ def load_data():
         return pd.DataFrame(columns=["date", "weight", "sports_activity"])
     df = pd.DataFrame(entries)
     df["_id"] = df["_id"].astype(str)
-    df.set_index("_id", inplace=True)
-    df.sort_values("date", inplace=True)
-    df["date"] = pd.to_datetime(df["date"])
+    df.drop(columbs=["_id"], inplace=True)
+    df.set_index("date", inplace=True)
+    df.sort_values(df.index, inplace=True)
+    # df["date"] = pd.to_datetime(df["date"])
     return df
 
 # Daten laden
@@ -49,39 +50,39 @@ with st.sidebar:
         except Exception as e:
             st.error(f"Fehler beim Hinzufügen: {e}")
 
-    st.markdown("---")
-    st.subheader("Eintrag löschen")
-    delete_id = st.text_input("Eintrags-ID", key="delete_id")
-    if st.button("Löschen"):
-        if delete_id:
-            deleted = delete_entry(db_coll, delete_id)
-            if deleted:
-                st.success(f"Eintrag {delete_id} gelöscht.")
-                load_data.clear()
-            else:
-                st.warning("ID nicht gefunden.")
-        else:
-            st.warning("Bitte gib eine ID ein.")
+    #st.markdown("---")
+    #st.subheader("Eintrag löschen")
+    #delete_id = st.text_input("Eintrags-ID", key="delete_id")
+   # if st.button("Löschen"):
+      #  if delete_id:
+       #     deleted = delete_entry(db_coll, delete_id)
+      #      if deleted:
+      #          st.success(f"Eintrag {delete_id} gelöscht.")
+        #        load_data.clear()
+       #     else:
+      #          st.warning("ID nicht gefunden.")
+      #  else:
+      #      st.warning("Bitte gib eine ID ein.")
 
-    st.markdown("---")
-    st.subheader("Eintrag bearbeiten")
-    if not df.empty:
-        edit_id = st.selectbox("Wähle ID zum Bearbeiten", options=df.index, key="edit_id")
-        new_w = st.number_input(
-            "Neues Gewicht (kg)",
-            value=float(df.loc[edit_id, "weight"]),
-            format="%.1f",
-            key="edit_w"
-        )
-        if st.button("Aktualisieren", key="update_btn"):
-            modified = update_weight(db_coll, edit_id, new_w)
-            if modified:
-                st.success("Gewicht aktualisiert.")
-                load_data.clear()
-            else:
-                st.warning("Keine Änderung vorgenommen.")
-    else:
-        st.info("Noch keine Einträge zum Bearbeiten.")
+  #  st.markdown("---")
+  #  st.subheader("Eintrag bearbeiten")
+   # if not df.empty:
+    #    edit_id = st.selectbox("Wähle ID zum Bearbeiten", options=df.index, key="edit_id")
+   #     new_w = st.number_input(
+   #         "Neues Gewicht (kg)",
+     #       value=float(df.loc[edit_id, "weight"]),
+     #       format="%.1f",
+      #      key="edit_w"
+      #  )
+    #    if st.button("Aktualisieren", key="update_btn"):
+     #       modified = update_weight(db_coll, edit_id, new_w)
+      #      if modified:
+       #         st.success("Gewicht aktualisiert.")
+       #         load_data.clear()
+      #      else:
+       #         st.warning("Keine Änderung vorgenommen.")
+  #  else:
+     #   st.info("Noch keine Einträge zum Bearbeiten.")
 
 # Hauptbereich: Tabelle & Diagramm
 col1, col2 = st.columns(2)
