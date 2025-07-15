@@ -22,7 +22,7 @@ def load_data():
         return pd.DataFrame(columns=["date", "weight", "sports_activity"])
     df = pd.DataFrame(entries)
     df["_id"] = df["_id"].astype(str)
-    df.drop(columbs=["_id"], inplace=True)
+    df.drop(columns=["_id"], inplace=True)
     df.set_index("date", inplace=True)
     df.sort_values(df.index, inplace=True)
     # df["date"] = pd.to_datetime(df["date"])
