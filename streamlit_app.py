@@ -1,6 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 # app.py
+=======
+>>>>>>> 4a2501e (asd)
 import streamlit as st
 import pandas as pd
 import plotly.express as px
@@ -113,5 +116,8 @@ if st.button("Daten aktualisieren", key="refresh"):
 # .streamlit/secrets.toml Beispiel
 # [default]
 # MONGO_URI = "mongodb+srv://user:password@whcluster0.kxjuhm0.mongodb.net/weight_tracker?..."
+<<<<<<< HEAD
 =======
 >>>>>>> 6e4dcff (edit)
+=======
+>>>>>>> 4a2501e (asd)
