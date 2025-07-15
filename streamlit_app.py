@@ -25,7 +25,7 @@ def load_data():
     df = df[["date","weight","sports_activity"]]
     # df.set_index("date", inplace=True)
     df.sort_values("date", inplace=True)
-    df["date"] = pd.to_datetime(df["date"])
+    df["date"] = pd.to_datetime(df["date"]).dt.strftime("%Y-%m-%d")
     return df
 
 # Daten laden
