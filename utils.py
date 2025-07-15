@@ -6,7 +6,7 @@ from bson import ObjectId
 
 def init_db():
     # zuerst Umgebungsvariable, sonst dein TOML-Block
-    uri = os.getenv("MONGO_URI") or st.secrets["mongodb"]["uri"]
+    uri = os.getenv("MONGO_URI") or st.secrets["mongodb"]["MONGO_URI"]
     if not uri:
         raise ValueError("Bitte setze MONGO_URI als Umgebungsvariable oder in Streamlit-Secrets!")
     client = MongoClient(uri, server_api=ServerApi('1'))
