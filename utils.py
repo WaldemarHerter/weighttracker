@@ -5,16 +5,15 @@ from pymongo.server_api import ServerApi
 from bson import ObjectId
 
 def init_db():
-    # zuerst Umgebungsvariable, sonst dein TOML-Block
     uri = os.getenv("MONGO_URI") or st.secrets["MONGO_URI"]
     if not uri:
-        raise ValueError("Bitte setze MONGO_URI als Umgebungsvariable oder in Streamlit-Secrets!")
-    client = MongoClient(uri, server_api=ServerApi('1'))
+        raise ValueError("Bitte setze MONGO_URI als Secret im Cloud‑Dashboard!")
+    client = MongoClient(uri, server_api=ServerApi("1"))
     try:
         client.admin.command("ping")
         print("✅ MongoDB verbunden!")
     except Exception as e:
-        raise ConnectionError(f"MongoDB-Verbindung fehlgeschlagen: {e}")
+        raise ConnectionError(f"MongoDB‑Verbindung fehlgeschlagen: {e}")
     db = client["weight_tracker"]
     return db["weights"]
 
