@@ -1,1 +1,5 @@
-streamlit
+streamlit>=1.0
+pandas>=1.0
+plotly>=5.0
+pymongo[srv]>=4.0
+dnspython>=2.0
