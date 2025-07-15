@@ -109,7 +109,3 @@ with col2:
 if st.button("Daten aktualisieren", key="refresh"):
     load_data.clear()
     st.rerun()
-
-# .streamlit/secrets.toml Beispiel
-# [default]
-# MONGO_URI = "mongodb+srv://user:password@whcluster0.kxjuhm0.mongodb.net/weight_tracker?..."
