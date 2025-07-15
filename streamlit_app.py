@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 # app.py
 import streamlit as st
@@ -112,3 +113,5 @@ if st.button("Daten aktualisieren", key="refresh"):
 # .streamlit/secrets.toml Beispiel
 # [default]
 # MONGO_URI = "mongodb+srv://user:password@whcluster0.kxjuhm0.mongodb.net/weight_tracker?..."
+=======
+>>>>>>> 6e4dcff (edit)
